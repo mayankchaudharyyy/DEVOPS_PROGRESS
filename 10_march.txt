@@ -1,0 +1,39 @@
+What is Containerization?
+
+Containerization is a method to package an application along with its dependencies so that it can run anywhere.
+Example is like PG living, where people stay in same building but have their own separate space.
+
+What exactly containers do:
+
+They don’t carry a full operating system
+They use only the minimum required OS
+Share the host OS and bring only what the application needs
+They start in seconds and consume very less resources
+Can run dozens or even hundreds on the same machine
+
+Evolution of Applications:
+
+Earlier applications were monolithic, so physical servers were used (with all dependencies together)
+Later applications were divided into components like frontend, backend, database, so VMs were used for hosting
+Now most applications follow microservices architecture, where Docker (containerization tool) is used
+
+Containers also solve the portability problem (same app runs everywhere)
+
+Need of Containers:
+
+Traditional setup (VM-based):
+App → Bins/Libs → Guest OS → Hypervisor → Host OS → Infrastructure
+
+Container-based setup:
+App → Bins/Libs → Docker Engine → Host OS → Infrastructure
+
+Containers remove the need of full guest OS, making them lightweight and faster
+
+Container Runtime:
+
+Container runtime is a software used to start, stop and manage containers.
+It also keeps track of which containers are running.
+
+Commands:
+container run <container_name/id>
+container stop <container_name/id>
