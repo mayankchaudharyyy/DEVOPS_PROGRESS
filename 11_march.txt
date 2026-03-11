@@ -1,0 +1,26 @@
+Need of Container:
+
+Containers are needed because modern applications are moving towards microservices.
+They help in running multiple applications efficiently on the same system.
+They are lightweight, fast, and solve the portability problem.
+Containers also reduce dependency issues and make deployment easier.
+
+Types of Container Runtime:
+
+High Level Runtimes
+Used by users and developers
+Provide easy interface to manage containers
+Example: Kubernetes
+Low Level Runtimes
+Directly interact with the Linux kernel
+Work with core features like:
+Namespaces
+(Purpose of namespaces is to provide isolation. It is like a standard library of predefined features such as -p (port), -t, -v, etc.)
+Process isolation is achieved using Linux namespaces
+cgroups
+Used for resource management like CPU, memory, etc.
+
+Real World Analogy:
+
+Container Image → packed lunch box
+Container Runtime → person who opens it, serves food and cleans up
