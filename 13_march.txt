@@ -1,0 +1,144 @@
+Real world analogy behind namespaces:
+
+It is like separate cabins in a train
+
+Same engine (kernel)
+Different passengers
+No visibility between cabins
+
+This means each container works independently but uses the same system.
+
+Control Groups (cgroups):
+
+cgroups are Linux kernel features used to control and limit resource usage of containers.
+
+They ensure:
+
+No container uses all resources
+Fair sharing of CPU, memory and I/O
+
+Namespaces provide isolation, while cgroups provide control.
+
+Need of cgroups:
+
+Without cgroups:
+
+One container can consume all CPU or RAM
+Other containers and host system may crash
+
+Types of resources controlled:
+
+CPU → limit usage and assign shares
+Memory → set max limit, kill if exceeded
+Disk I/O → control read/write
+Network → controlled indirectly
+
+Real world analogy (cgroups):
+
+Like electricity meter in flats
+
+Each flat has a limit
+One person cannot use all power
+
+Task 1:
+
+If a faulty container crashes system due to high memory:
+
+Missing feature → cgroups
+Kernel mechanism → cgroups
+Namespaces alone enough? → No (only isolation, no control)
+
+Task 2:
+
+3 containers:
+A → CPU intensive
+B → web server
+C → database
+
+CPU control → cgroups
+Process isolation → PID namespace
+Same port usage → Network namespace
+
+Container Images:
+
+Image is a read-only blueprint of a container
+
+Includes:
+
+Base OS
+Application code
+Libraries
+Runtime
+Config
+
+Images are immutable (cannot change once created)
+
+Example: python:3.11-slim
+
+Layering:
+
+Images are built in layers:
+OS → runtime → application → dependencies
+
+Image vs Container:
+
+Image → read-only
+Container → writable running instance
+
+Image Registry:
+
+Central place to store and manage images
+
+Uses:
+
+Share images
+Same environment everywhere
+Works with CI/CD
+
+Why registry needed:
+
+Without it:
+
+Build again and again
+No version control
+Inconsistency
+
+With it:
+
+Build once, use everywhere
+Faster deployment
+Easy rollback
+
+Types:
+
+Public → open access
+Private → secure and restricted
+
+Examples:
+
+Amazon Elastic Container Registry
+Azure Container Registry
+
+Image naming:
+
+format:
+<registry>/<namespace>/<image>:<tag>
+
+example:
+docker.io/aastha/webapp:v1
+
+Push and Pull:
+
+Push → upload image
+Pull → download image
+
+Only new layers are transferred
+
+CI/CD flow:
+
+Code → build image → push → deploy
+
+Comparison:
+
+Public → less secure
+Private → more secure and controlled
