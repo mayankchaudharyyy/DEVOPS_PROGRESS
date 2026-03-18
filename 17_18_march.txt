@@ -1,0 +1,55 @@
+Docker Commands:
+
+docker pull nginx
+Pulls the nginx image from registry
+
+docker run -d -p 80:80 --name mynginx nginx
+Runs nginx container in background and exposes it to browser
+
+Purpose of flags:
+
+-d → runs container in background (detached mode), so terminal stays free
+-p → maps ports (host:container), used for networking
+--name → gives a name to container
+
+Basic Commands:
+
+docker ps
+Shows running containers
+
+docker stop mynginx
+Stops the container
+
+docker start <container_id>
+Starts a stopped container
+
+docker rm -f mynginx
+Removes container forcefully (even if running)
+
+docker rmi nginx
+Removes image
+
+Other Important Commands:
+
+docker exec -it <container_id> bash
+Opens terminal inside a running container
+
+docker logs <container_id>
+Shows container output/logs
+
+docker inspect <container_id>
+Shows detailed configuration in JSON format
+
+Volume Commands:
+
+docker volume create myvolume
+Creates a persistent storage volume
+
+docker volume ls
+Lists all volumes
+
+docker volume inspect myvolume
+Shows volume details
+
+docker volume rm myvolume
+Removes volume
