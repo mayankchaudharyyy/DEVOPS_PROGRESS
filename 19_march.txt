@@ -1,0 +1,130 @@
+Docker Basics & Commands – CA-1 Prep Notes
+
+Core Concepts (First Principles)
+Docker: Tool to run applications in isolated environments (containers)
+Image: Blueprint/template
+Container: Running instance of an image
+Volume: Persistent storage (data remains even after container deletion)
+Network: Communication layer between containers
+
+Container Commands
+
+Run Container
+docker run -d --name <name> <image>
+
+List Containers
+docker ps (running)
+docker ps -a (all)
+
+Stop Container
+docker stop <container>
+
+Remove Container
+docker rm <container>
+docker rm -f <container> (force remove)
+
+Debugging Commands
+
+View Logs
+docker logs <container>
+docker logs -f <container> (live logs)
+
+Inspect Container
+docker inspect <container>
+
+Resource Usage
+docker stats
+
+Running Processes
+docker top <container>
+
+Enter Container
+docker exec -it <container> bash
+
+Volumes
+
+Create Volume
+docker volume create <name>
+
+List Volumes
+docker volume ls
+
+Inspect Volume
+docker volume inspect <name>
+
+Use Volume
+docker run -v <volume>:<path> <image>
+
+Mount Path (host side)
+/var/lib/docker/volumes/<volume>/_data
+
+Networks
+
+List Networks
+docker network ls
+
+Create Network
+docker network create <name>
+
+Inspect Network
+docker network inspect <name>
+
+Remove Network
+docker network rm <name>
+
+Bulk Commands
+
+Stop all containers
+docker stop $(docker ps -q)
+
+Remove all containers
+docker rm $(docker ps -aq)
+
+Force remove all
+docker rm -f $(docker ps -aq)
+
+Remove all images
+docker rmi $(docker images -q)
+
+Important Differences
+
+logs → shows container output
+inspect → shows configuration and metadata
+stats → shows performance usage
+top → shows running processes
+
+Network Types
+
+bridge → default network
+host → no isolation
+none → no networking
+
+Apache Deployment Task
+
+docker pull httpd
+docker images
+docker run -d --name apache-web -p 8081:80 httpd
+docker ps
+
+Access in browser:
+http://localhost:8081
+
+Key Mental Models
+
+Container → temporary compute
+Volume → permanent storage
+Network → communication layer
+
+Common Mistakes
+
+Using wrong IDs (container vs image)
+Forgetting -d (detached mode)
+Wrong port mapping (: vs -)
+Trying to remove running containers
+
+Debugging Flow
+
+Enter container
+Check logs
+Inspect configuration
+Check processes
