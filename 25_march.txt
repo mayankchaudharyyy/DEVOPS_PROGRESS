@@ -1,0 +1,87 @@
+Docker Notes (Run Commands + Flags + Env Variables)
+
+Core Concepts
+Image = blueprint
+Container = running instance
+docker run = create + configure + start
+
+Basic Commands
+
+docker --version
+docker info
+
+Images
+
+docker pull httpd
+docker images
+
+Run Container
+
+docker run ubuntu
+(Container exits if no process runs)
+
+Important Flags
+
+-d → background
+-it → interactive terminal
+--name → container name
+--rm → auto delete
+-p → port mapping (host:container)
+-e → env variables
+-v → volume (data persistence)
+
+Example:
+docker run -d -p 8080:80 httpd
+
+Env Variables
+
+docker run -e MY_VAR=value ubuntu env
+
+From host:
+export MY_VAR=hello
+docker run -e MY_VAR ubuntu env
+
+Run Commands Inside Container
+
+Wrong:
+docker run httpd echo "hello"
+
+Correct:
+docker run ubuntu sh -c 'echo "hello" > file.txt'
+
+Common Mistakes
+
+wrong image name
+wrong env syntax
+forgetting -d
+wrong port mapping
+
+Mental Model
+
+Before running think:
+
+need port?
+need env?
+need terminal?
+
+Flow
+
+docker run -d -p 8080:80 -e ENV=prod httpd
+
+Image → container → port mapped → env set → process start
+
+Key Takeaway
+
+docker run = everything in one command
+
+logs → what is happening
+inspect → how it is built
+stats → how it performs
+
+Extra (important)
+
+Dockerfile → builds image
+Docker Compose → runs multiple containers together
+
+Containers share host kernel
+Volumes store persistent data
