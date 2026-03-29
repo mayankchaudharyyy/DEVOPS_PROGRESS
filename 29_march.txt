@@ -1,0 +1,32 @@
+Docker notes continue
+
+This repository contains my practice notes on Docker basics and core commands.
+I am learning Docker step by step with hands-on examples and commands.
+
+Topics Covered
+Docker run command and flags
+Container lifecycle (run, stop, start, remove)
+Port mapping and browser access
+Docker images (list, remove)
+Environment variables
+docker exec and debugging
+MySQL container setup
+Basic concepts like container, image, process
+Key Concepts
+Container = running process
+Image = blueprint
+Port mapping = connection between host and container
+Containers run only if main process is active
+Containers are temporary (data lost if not stored properly)
+Commands Practice
+Running containers with different options
+Checking containers using docker ps
+Debugging using logs and exec
+Working with environment variables
+Removing containers and images
+Debugging Approach
+Check running containers → docker ps
+Check all containers → docker ps -a
+Check logs → docker logs
+Goal
+ 
