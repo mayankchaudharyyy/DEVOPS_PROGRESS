@@ -1,0 +1,88 @@
+Docker Commands Practice (Hands-on Notes)
+
+ 
+1. Run Container
+
+docker run -d -p 8080:80 --name my-nginx nginx
+Use: run nginx in background and expose port
+
+ 
+
+2. Logs
+
+docker logs <container_id>
+Use: view logs
+
+docker logs -f <container_id>
+Use: live logs
+
+ 
+
+3. Stats
+
+docker stats
+Use: check CPU, memory, network usage
+
+ 
+
+4. Exec (Enter Container)
+
+docker exec -it <container_id> bash
+Use: open terminal
+
+If bash not available:
+docker exec -it <container_id> sh
+
+Common mistake:
+docker exec -it <container_id>
+(missing command)
+
+ 
+
+5. File Operations
+
+mkdir /data
+echo "hello docker" > /data/test.txt
+
+Use: create files inside container
+
+ 
+
+6. Copy Files
+
+Container → Host
+docker cp <container_id>:/data/test.txt ~/Desktop
+
+Host → Container
+docker cp ~/Desktop/test.txt <container_id>:/data/sample.txt
+
+Use: transfer files
+ 
+7. Read File
+
+docker exec -it <container_id> cat /data/sample.txt
+
+Multiple commands:
+docker exec -it <container_id> sh -c "ls /data && cat /data/sample.txt"
+
+ 
+
+8. docker attach
+
+docker attach <container_id>
+
+Use: attach to main process
+Warning: Ctrl+C will stop container
+
+ 
+
+Mental Model
+
+docker run → create + start
+docker exec → run command inside
+docker logs → output
+docker stats → performance
+docker cp → file transfer
+docker attach → control main process
+
+ 
