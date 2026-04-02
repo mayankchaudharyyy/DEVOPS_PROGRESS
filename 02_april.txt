@@ -1,0 +1,46 @@
+Docker Commands – Practice Notes
+
+Mental Model
+
+Container = chhota isolated system
+Image = blueprint
+Env variable = settings
+Logs = output
+
+Q1: Run nginx + env
+
+docker run -d -e ENV_MODE=production --name my_nginx nginx
+
+-d → background
+-e → env variable
+--name → container name
+
+Q2: Logs
+
+docker logs my_app
+docker logs -f my_app (live logs)
+
+Q3: Start / Stop
+
+docker start web_server
+docker stop web_server
+
+Mental Understanding
+
+run → new container create + start
+start → existing container start
+stop → shutdown
+logs → output check
+
+Common Mistakes
+
+-e bhool jana
+logs without -f (no live output)
+run vs start confuse karna
+
+Practice
+
+docker run -d -e MODE=test nginx
+docker logs -f <container_id>
+docker stop <container_id>
+docker start <container_id>
