@@ -1,0 +1,51 @@
+Docker Volume Notes
+ 
+
+Container = temporary (data lost on delete)
+Volume = persistent (data stays)
+
+Step 1: Create Volume
+
+docker volume create projectdata
+
+Step 2: Verify
+
+docker volume ls
+docker volume inspect projectdata
+
+Mount path:
+/var/lib/docker/volumes/projectdata/_data
+
+Step 3: Run Container with Volume
+
+docker run -dit --name project_container -v projectdata:/app/data ubuntu
+
+Step 4: Create File
+
+docker exec -it project_container bash
+cd /app/data
+echo "this is my first volume" > report.txt
+
+Step 5: Verify
+
+ls /app/data
+cat /app/data/report.txt
+
+Step 6: Remove Container
+
+docker rm -f project_container
+
+Step 7: Run New Container
+
+docker run -dit --name proj_container_new -v projectdata:/app/data ubuntu
+
+Step 8: Check Persistence
+
+docker exec -it proj_container_new ls /app/data
+docker exec -it proj_container_new cat /app/data/report.txt
+
+Expected output:
+report.txt
+this is my first volume
+
+ 
