@@ -6,7 +6,7 @@ GitHub Actions is a CI/CD (Continuous Integration and Continuous Deployment) too
 
 ---
 
-## Core Concepts
+## Core Concept
 
 ### 1. Workflow
 
